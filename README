@@ -46,3 +46,5 @@
 -`node server.js 8083`
 -`node server.js 8084`
 -`node server.js 8085`
+
+-Luego ejecutamos Nginx y nos dirigimos a 'localhost/api/randoms', la misma nos redirige de manera equivalente a los 4 puertos previamente configurados en el upstream.(No levante estos servidores con pm2 ya que el mismo me lanza un error al querer levantar un proceso con otro puerto que no sea el default (8080))
