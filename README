@@ -42,7 +42,7 @@
 
 -Luego modificamos para que /api/randoms rediriga a un cluster de servidores, repartiéndolas equitativamente entre 4 instancias:
 
--`pm2 start server.js --watch -- 8082`
--`pm2 start server.js --watch -- 8083`
--`pm2 start server.js --watch -- 8084`
--`pm2 start server.js --watch -- 8085`
+-`node server.js 8082`
+-`node server.js 8083`
+-`node server.js 8084`
+-`node server.js 8085`
