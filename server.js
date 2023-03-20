@@ -57,7 +57,7 @@ const model = mongoose.model("users", UserSchema);
 
 //PRODUCTOS - MariaDB
 // CORROBORA SI EXISTE LA TABLA "PRODUCTOS", SI NO EXISTE, LA CREA.
-apiProdsSQL.crearTablaProds();
+// apiProdsSQL.crearTablaProds();
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -263,22 +263,22 @@ app.get("/", checkAuthentication, (req, res) => {
 
     //PRODS
 
-    apiProdsSQL.ListarProds().then((prods) => {
-      socket.emit("productos", prods);
-    });
+    // apiProdsSQL.ListarProds().then((prods) => {
+    //   socket.emit("productos", prods);
+    // });
 
-    socket.on("nuevo-producto", (data) => {
-      apiProdsSQL
-        .guardarProd(data)
-        .then(() => {
-          console.log("Producto cargado en la base de datos");
-          return apiProdsSQL.ListarProds();
-        })
-        .then((prods) => {
-          io.sockets.emit("productos", prods);
-          console.log("Vista de productos actualizada");
-        });
-    });
+    // socket.on("nuevo-producto", (data) => {
+    //   apiProdsSQL
+    //     .guardarProd(data)
+    //     .then(() => {
+    //       console.log("Producto cargado en la base de datos");
+    //       return apiProdsSQL.ListarProds();
+    //     })
+    //     .then((prods) => {
+    //       io.sockets.emit("productos", prods);
+    //       console.log("Vista de productos actualizada");
+    //     });
+    // });
   });
 });
 
@@ -335,9 +335,11 @@ app.get("/api/randoms", (req, res) => {
 
   child.send(cant);
 
-  child.on("message", (result) => {
-    res.json(result);
-  });
+  res.send(`Servidor express nginx en ${PORT} - PID: ${process.pid} - Date: ${(new Date).toLocaleString()}`);
+
+  // child.on("message", (result) => {
+  //   res.json(result);
+  // });
 });
 
 //SERVIDOR
